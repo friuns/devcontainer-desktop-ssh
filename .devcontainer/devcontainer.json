@@ -30,7 +30,11 @@
         "echo 'Setting up additional Ubuntu packages...'",
         "sudo apt-get update",
         "sudo apt-get install -y curl wget nano htop net-tools openssh-client build-essential python3-pip nodejs npm firefox",
-        "echo 'Ubuntu desktop environment with additional packages is ready!'"
+        "echo 'Installing Wine for Windows application support...'",
+        "sudo dpkg --add-architecture i386",
+        "sudo apt-get update",
+        "sudo apt-get install -y wine wine32",
+        "echo 'Full Ubuntu desktop environment with Wine is ready!'"
     ],
     "remoteUser": "vscode"
 }
