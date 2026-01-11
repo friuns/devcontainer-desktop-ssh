@@ -1,6 +1,6 @@
 {
     "name": "Dev Container with Desktop and SSH",
-    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
         "ghcr.io/devcontainers/features/desktop-lite:1": {
             "password": "vscode",
@@ -8,19 +8,6 @@
             "vncPort": "5901"
         },
         "ghcr.io/devcontainers/features/sshd:1": {
-            "version": "latest"
-        },
-        "ghcr.io/devcontainers/features/common-utils:2": {
-            "installZsh": true,
-            "installOhMyZsh": true,
-            "upgradePackages": true,
-            "username": "vscode"
-        },
-        "ghcr.io/devcontainers/features/git:1": {
-            "version": "latest",
-            "ppa": false
-        },
-        "ghcr.io/devcontainers/features/github-cli:1": {
             "version": "latest"
         }
     },
@@ -41,7 +28,7 @@
     },
     "postCreateCommand": [
         "echo 'Installing common desktop applications...'",
-        "apt-get update && apt-get install -y --no-install-recommends xfce4-terminal mousepad thunar firefox x11-apps xterm gedit vim-gtk3 leafpad",
+        "sudo apt-get update && sudo apt-get install -y --no-install-recommends xfce4-terminal mousepad thunar firefox x11-apps xterm gedit vim-gtk3 leafpad",
         "echo 'Dev container with Desktop and SSH is ready!'"
     ],
     "remoteUser": "vscode"
