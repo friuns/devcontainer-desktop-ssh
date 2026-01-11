@@ -1,6 +1,6 @@
 {
     "name": "Dev Container with Desktop and SSH",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "image": "ubuntu:24.04",
     "features": {
         "ghcr.io/devcontainers/features/desktop-lite:1": {
             "password": "vscode",
@@ -27,9 +27,12 @@
         }
     },
     "postCreateCommand": [
+        "echo 'Setting up full Ubuntu environment...'",
+        "apt-get update",
+        "apt-get install -y sudo curl wget git vim nano htop net-tools openssh-client build-essential python3 python3-pip nodejs npm",
         "echo 'Installing common desktop applications...'",
-        "sudo apt-get update && sudo apt-get install -y --no-install-recommends xfce4-terminal mousepad thunar firefox x11-apps xterm gedit vim-gtk3 leafpad",
-        "echo 'Dev container with Desktop and SSH is ready!'"
+        "apt-get install -y --no-install-recommends xfce4-terminal mousepad thunar firefox x11-apps xterm gedit vim-gtk3 leafpad",
+        "echo 'Full Ubuntu desktop environment is ready!'"
     ],
     "remoteUser": "vscode"
 }
