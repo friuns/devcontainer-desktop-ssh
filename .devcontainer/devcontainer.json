@@ -1,0 +1,31 @@
+{
+    "name": "Dev Container with Desktop and SSH",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/devcontainers/features/desktop-lite:1": {
+            "password": "vscode",
+            "webPort": "6080",
+            "vncPort": "5901"
+        },
+        "ghcr.io/devcontainers/features/sshd:1": {
+            "version": "latest"
+        }
+    },
+    "forwardPorts": [6080, 5901, 2222],
+    "portsAttributes": {
+        "6080": {
+            "label": "Desktop (noVNC)",
+            "onAutoForward": "notify"
+        },
+        "5901": {
+            "label": "VNC",
+            "onAutoForward": "notify"
+        },
+        "2222": {
+            "label": "SSH",
+            "onAutoForward": "notify"
+        }
+    },
+    "postCreateCommand": "echo 'Dev container with Desktop and SSH is ready!'",
+    "remoteUser": "vscode"
+}
